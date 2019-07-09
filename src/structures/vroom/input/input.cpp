@@ -34,6 +34,7 @@ void Input::set_geometry(bool geometry) {
 
 void Input::set_routing(
   std::unique_ptr<routing::Wrapper<Cost>> routing_wrapper) {
+    routing_wrapper->malus = malus;
   _routing_wrapper = std::move(routing_wrapper);
 }
 
@@ -315,6 +316,8 @@ Solution Input::solve(unsigned exploration_level, unsigned nb_thread) {
   if (_matrix.size() < 2) {
     // OSRM call if matrix not already provided.
     assert(_routing_wrapper);
+    //#malus
+    //_routing_wrapper.malus = malus;
     _matrix = _routing_wrapper->get_matrix(_locations);
   }
 

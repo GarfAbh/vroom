@@ -61,6 +61,9 @@ public:
   std::vector<Job> jobs;
   std::vector<Vehicle> vehicles;
 
+  //#malus
+  int malus;
+
   Input();
 
   void set_geometry(bool geometry);

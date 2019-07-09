@@ -41,8 +41,8 @@ void display_usage() {
   usage += "\t-o OUTPUT,\t\t\t output file name\n";
   usage += "\t-r ROUTER (=osrm),\t\t osrm, libosrm or ors\n";
   usage += "\t-t THREADS (=4),\t\t number of threads to use\n";
-  usage += "\t-x EXPLORE (=5),\t\t exploration level to use (0..5)";
-  usage += "\t-m MALUS (=0),\t\t malus to put on every time returned by osrm (0-100%)";
+  usage += "\t-x EXPLORE (=5),\t\t exploration level to use (0..5)\n";
+  usage += "\t-m MALUS (=0),\t\t malus to put on every returned time by osrm (0-100%)\n";
   std::cout << usage << std::endl;
   exit(0);
 }
@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
   vroom::io::CLArgs cl_args;
 
   // Parsing command-line arguments.
-  const char* optString = "a:gi:o:p:r:t:x:h?";
+  const char* optString = "a:gi:o:p:r:t:x:h:m:?";
   int opt = getopt(argc, argv, optString);
 
   std::string router_arg;
@@ -90,7 +90,8 @@ int main(int argc, char** argv) {
       break;
     //#malus
     case 'm':
-        cl_args.malus = optarg;
+      cl_args.malus = std::atoi(optarg);
+      break;
     default:
       break;
     }

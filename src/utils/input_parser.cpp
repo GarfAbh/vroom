@@ -144,6 +144,7 @@ Input parse(const CLArgs& cl_args) {
   // Custom input object embedding jobs, vehicles and matrix.
   Input input;
   input.set_geometry(cl_args.geometry);
+  input.malus = cl_args.malus;
 
   // Input json object.
   rapidjson::Document json_input;

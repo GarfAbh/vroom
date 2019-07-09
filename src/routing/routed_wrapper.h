@@ -35,6 +35,7 @@ public:
   get_matrix(const std::vector<Location>& locs) const override;
 
   virtual void add_route_info(Route& route) const override;
+
 };
 
 } // namespace routing

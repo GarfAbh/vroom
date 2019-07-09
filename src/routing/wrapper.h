@@ -23,6 +23,8 @@ template <class T> class Wrapper {
 
 public:
   std::string _profile;
+  //#malus
+  int malus;
 
   virtual Matrix<T> get_matrix(const std::vector<Location>& locs) const = 0;
 
