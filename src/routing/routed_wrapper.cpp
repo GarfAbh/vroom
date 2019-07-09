@@ -132,7 +132,8 @@ RoutedWrapper::get_matrix(const std::vector<Location>& locs) const {
         ++nb_unfound_to_loc[j];
       } else {
         auto cost = round_cost(line[j].GetDouble());
-        m[i][j] = cost;
+        //TODO c'est ici qu'il faut rajouter le pourcentage pour ca je doit le récuperer en argument peut être au setup ?
+        m[i][j] = cost + (cl_args.malus * cost / 100);
       }
     }
   }

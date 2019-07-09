@@ -42,6 +42,7 @@ void display_usage() {
   usage += "\t-r ROUTER (=osrm),\t\t osrm, libosrm or ors\n";
   usage += "\t-t THREADS (=4),\t\t number of threads to use\n";
   usage += "\t-x EXPLORE (=5),\t\t exploration level to use (0..5)";
+  usage += "\t-m MALUS (=0),\t\t malus to put on every time returned by osrm (0-100%)";
   std::cout << usage << std::endl;
   exit(0);
 }
@@ -87,6 +88,9 @@ int main(int argc, char** argv) {
     case 'x':
       exploration_level_arg = optarg;
       break;
+    //#malus
+    case 'm':
+        cl_args.malus = optarg;
     default:
       break;
     }
